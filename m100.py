@@ -26,22 +26,8 @@ class BST:
             else:
                 cur.right = Node(value)
 
+arrays = [1, 10, 8, 4, 6, 3, 2, 5]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+bst = BST()
+for i in arrays:
+    bst.insert(i)
