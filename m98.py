@@ -41,7 +41,7 @@ arrays = [
     ]
 
 for i, data in enumerate(arrays, 1):
-    print(f"Input {i}: {data}")
+    print(f"Question {i}: {data}")
     print("-"*15)
     result = create_and_traverse_bst(data)
     print(f"In Order: {result['inOrder']}")
