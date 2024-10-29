@@ -20,6 +20,9 @@ def inOrder(root):
 def preOrder(root):
     return [root.val] + preOrder(root.left) + preOrder(root.right) if root else []
 
+def postOrder(root):
+    return postOrder(root.left) + postOrder(root.right) + [root.val] if root else []
+
 # Create BST and get traversals
 def create_and_traverse_bst(data):
     root = None
@@ -27,7 +30,8 @@ def create_and_traverse_bst(data):
         root = insertNode(root, num)
     return {
         "inOrder": inOrder(root),
-        "preOrder": preOrder(root)
+        "preOrder": preOrder(root),
+        "postOrder": postOrder(root)
     }
 
 arrays = [
@@ -38,7 +42,9 @@ arrays = [
 
 for i, data in enumerate(arrays, 1):
     print(f"Input {i}: {data}")
+    print("-"*15)
     result = create_and_traverse_bst(data)
     print(f"In Order: {result['inOrder']}")
     print(f"Pre Order: {result['preOrder']}")
+    print(f"Post Order: {result['postOrder']}")
     print("="*15)
