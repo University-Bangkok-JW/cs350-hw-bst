@@ -1,0 +1,11 @@
+# left, root, right
+Infix
+    5 * 2 + 1 - 20 / 4
+
+# root, left, right
+Prefix
+    + * 5 2 - 1 / 20 4
+
+# left, right, root
+Post
+    5 2 * 1 20 4 / -
