@@ -40,6 +40,5 @@ for i, data in enumerate(arrays, 1):
     print(f"Input {i}: {data}")
     result = create_and_traverse_bst(data)
     print(f"In Order: {result['inOrder']}")
-    print("="*15)
     print(f"Pre Order: {result['preOrder']}")
     print("="*15)
