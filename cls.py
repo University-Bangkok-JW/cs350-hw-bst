@@ -12,3 +12,12 @@ def insertNode(root, key):
     else:
         root.right = insertNode(root.right, key)
     return root
+
+arrays = [
+    [4, 5, 1, 3, 11],
+    [2, 1, 7, 3, 10, 5, 8],
+    [4, 1, 5, 3, 11, 18, 22, 7, 6, 9]
+    ]
+
+for i, data in enumerate(arrays, 1):
+    print(f"Input {i}: {data}")
