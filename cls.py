@@ -13,6 +13,19 @@ def insertNode(root, key):
         root.right = insertNode(root.right, key)
     return root
 
+# Traversal functions
+def inorder(root):
+    return inorder(root.left) + [root.val] + inorder(root.right) if root else []
+
+# Create BST and get traversals
+def create_and_traverse_bst(data):
+    root = None
+    for num in data:
+        root = insertNode(root, num)
+    return {
+        "inorder": inorder(root)
+    }
+
 arrays = [
     [4, 5, 1, 3, 11],
     [2, 1, 7, 3, 10, 5, 8],
@@ -21,3 +34,5 @@ arrays = [
 
 for i, data in enumerate(arrays, 1):
     print(f"Input {i}: {data}")
+    result = create_and_traverse_bst(data)
+    print(f"In Order: {result['inorder']}")
