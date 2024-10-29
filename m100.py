@@ -40,6 +40,13 @@ class BST:
             self.inorderTraversal(node.right, result)
         return result
 
+    def postorderTraversal(self, node, result):
+        if node:
+            self.postorderTraversal(node.left, result)
+            self.postorderTraversal(node.right, result)
+            result.append(node.value)
+        return result
+
 arrays = [1, 10, 8, 4, 6, 3, 2, 5]
 
 bst = BST()
@@ -48,6 +55,8 @@ for i in arrays:
 
 preorder = bst.preorderTraversal(bst.root, [])
 inorder = bst.inorderTraversal(bst.root, [])
+postorder = bst.postorderTraversal(bst.root, [])
 
 print("Preorder Traversal:", preorder)
 print("Inorder Traversal:", inorder)
+print("Postorder Traversal:", postorder)
