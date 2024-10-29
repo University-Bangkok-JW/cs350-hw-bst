@@ -40,6 +40,7 @@ arrays = [
     [4, 1, 5, 3, 11, 18, 22, 7, 6, 9]
     ]
 
+print("="*15)
 for i, data in enumerate(arrays, 1):
     print(f"Question {i}: {data}")
     print("-"*15)
@@ -108,7 +109,11 @@ def printInorder(node):
         if node.left or node.right:
             print(")", end="")
 
+###############
+# Question 4 ##
+###############
 # Infix notation to token list
+print("Question 4")
 questionText = "6 - 8 / ( 1 + 3 ) * 2"
 tokens = questionText.split()
 tree = exprTreeInfix(tokens)
@@ -116,3 +121,26 @@ tree = exprTreeInfix(tokens)
 print("Inorder of expression tree for Infix notation '6 - 8 / (1 + 3) * 2':")
 printInorder(tree)
 print()
+print("="*15)
+
+###############
+# Question 5 ##
+###############
+# Function to build expression tree from prefix notation
+def exprTreePrefix(tokens):
+    token = tokens.pop(0)
+    node = ExprTreeNode(token)
+    if token in "+-*/":
+        node.left = exprTreePrefix(tokens)
+        node.right = exprTreePrefix(tokens)
+    return node
+
+# Prefix notation to token list
+print("Question 5")
+questionText = "+ * 4 2 / - 8 2 3"
+tokens = questionText.split()
+tree = exprTreePrefix(tokens)
+print("Inorder of expression tree for Prefix notation '+ * 4 2 / - 8 2 3':")
+printInorder(tree)
+print()
+print("="*15)
