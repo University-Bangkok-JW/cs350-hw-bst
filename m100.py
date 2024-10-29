@@ -37,7 +37,7 @@ class BST:
         if node:
             self.inorderTraversal(node.left, result)
             result.append(node.value)
-            self.inorderTraversal(node.left, result)
+            self.inorderTraversal(node.right, result)
         return result
 
 arrays = [1, 10, 8, 4, 6, 3, 2, 5]
