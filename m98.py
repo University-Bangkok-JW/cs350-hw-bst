@@ -27,7 +27,7 @@ def create_and_traverse_bst(data):
         root = insertNode(root, num)
     return {
         "inOrder": inOrder(root),
-        "preOder": preOrder(root)
+        "preOrder": preOrder(root)
     }
 
 arrays = [
