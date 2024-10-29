@@ -26,8 +26,19 @@ class BST:
             else:
                 cur.right = Node(value)
 
+    def preorderTraversal(self, node, result):
+        if node:
+            result.append(node.value)
+            self.preorderTraversal(node.left, result)
+            self.preorderTraversal(node.right, result)
+        return result
+
 arrays = [1, 10, 8, 4, 6, 3, 2, 5]
 
 bst = BST()
 for i in arrays:
     bst.insert(i)
+
+preorder = bst.preorderTraversal(bst.root, [])
+
+print("Preorder Traversal:", preorder)
