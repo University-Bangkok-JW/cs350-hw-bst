@@ -66,3 +66,53 @@ def precedence(op):
     if op in ('*', '/'):
         return 2
     return 0
+
+def exprTreeInfix(tokens):
+    def buildTree(stack, opStack):
+        right = stack.pop()
+        left = stack.pop()
+        operator = opStack.pop()
+        node = ExprTreeNode(operator)
+        node.left = left
+        node.right = right
+        stack.append(node)
+
+    stack, opStack = [], []
+    i = 0
+    while i < len(tokens):
+        if tokens[i].isdigit():
+            stack.append(ExprTreeNode(tokens[i]))
+        elif tokens[i] == '(':
+            opStack.append(tokens[i])
+        elif tokens[i] == ')':
+            while opStack[-1] != '(':
+                buildTree(stack, opStack)
+            opStack.pop()
+        else:
+            while (opStack and opStack[-1] != '(' and
+                   precedence(opStack[-1]) >= precedence(tokens[i])):
+                buildTree(stack, opStack)
+            opStack.append(tokens[i])
+        i += 1
+    while opStack:
+        buildTree(stack, opStack)
+    return stack[0]
+
+def printInorder(node):
+    if node:
+        if node.left or node.right:
+            print("(", end="")
+        printInorder(node.left)
+        print(node.val, end="")
+        printInorder(node.right)
+        if node.left or node.right:
+            print(")", end="")
+
+# Infix notation to token list
+questionText = "6 - 8 / ( 1 + 3 ) * 2"
+tokens = questionText.split()
+tree = exprTreeInfix(tokens)
+
+print("Inorder of expression tree for Infix notation '6 - 8 / (1 + 3) * 2':")
+printInorder(tree)
+print()
