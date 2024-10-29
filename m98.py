@@ -48,3 +48,21 @@ for i, data in enumerate(arrays, 1):
     print(f"Pre Order: {result['preOrder']}")
     print(f"Post Order: {result['postOrder']}")
     print("="*15)
+
+###############
+# Question 4 ##
+###############
+# Expression
+class ExprTreeNode:
+    def __init__(self, value):
+        self.left = None
+        self.right = None
+        self.val = value
+
+# Helper functions for infix to expression tree
+def precedence(op):
+    if op in ('+', '-'):
+        return 1
+    if op in ('*', '/'):
+        return 2
+    return 0
